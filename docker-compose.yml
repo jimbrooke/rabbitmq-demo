@@ -1,0 +1,23 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      - rabbit
+  consumer:
+    image: 127.0.0.1:5000/consumer
+    build: consumer/.
+    networks:
+      - rabbit
+  producer:
+    image: 127.0.0.1:5000/producer
+    build: producer/.
+    networks:
+      - rabbit
+
+networks:
+  rabbit:
+    driver: overlay
+    attachable: true
