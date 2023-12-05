@@ -20,7 +20,7 @@ And the producer in another
 python producer/producer.py
 ```
 
-## Container demo
+## Containers example
 
 Now change consumer.py and producer.py to use the 'rabbitmq' broker address, and build both containers
 ```
@@ -44,9 +44,11 @@ docker run --rm -it --network rabbit --name consumer
 docker run --rm -d --network rabbit --name producer
 ```
 
-## Service demo
+## Swarm services example
 
-Start your swarm
+When starting services manually, as here, the broker address will remain 'rabbitmq'.
+
+First start your swarm
 ```
 docker swarm init
 ```
@@ -63,7 +65,7 @@ docker service create --network rabbit --name consumer consumer
 docker service create --network rabbit --name producer producer
 ```
 
-## Docker compose
+## Docker compose example
 
 The docker-compose.yml file defines three services for the broker, consumer and producer. The startup sequence is controlled by introducing a 'healthcheck' for the rabbitmq service, and delaying start of the consumer and producer until this healthcheck is satisfied.  The consumer and producer are also replicated.
 

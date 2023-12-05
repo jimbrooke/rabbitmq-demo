@@ -5,7 +5,7 @@ import pika
 #params = pika.ConnectionParameters('localhost')
 
 # when RabbitMQ broker is running on network
-params = pika.ConnectionParameters('rabbitmq')
+#params = pika.ConnectionParameters('rabbitmq')
 
 # when starting services with docker compose
 params = pika.ConnectionParameters('rabbitmq-demo-rabbitmq-1')
