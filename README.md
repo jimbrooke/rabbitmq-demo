@@ -62,3 +62,14 @@ docker service create -p 15672:15672 -p 5672:5672 --network rabbit --name rabbit
 docker service create --network rabbit --name consumer consumer
 docker service create --network rabbit --name producer producer
 ```
+
+## Docker compose
+
+The docker-compose.yml file defines three services for the broker, consumer and producer. The startup sequence is controlled by introducing a 'healthcheck' for the rabbitmq service, and delaying start of the consumer and producer until this healthcheck is satisfied.  The consumer and producer are also replicated.
+
+Note that when running under compose, the service names are modified, so the address used by consumer and producer needs to be modified to 'rabbitmq-demo-rabbitmq-1'.
+
+To start everything simply run :
+```
+docker compose up
+```

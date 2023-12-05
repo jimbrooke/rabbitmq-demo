@@ -15,6 +15,9 @@ services:
     build: consumer/.
     networks:
       - rabbit
+    deploy:
+      mode: replicated
+      replicas: 3
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -23,6 +26,9 @@ services:
     build: producer/.
     networks:
       - rabbit
+    deploy:
+      mode: replicated
+      replicas: 2
     depends_on:
       rabbitmq:
         condition: service_healthy
