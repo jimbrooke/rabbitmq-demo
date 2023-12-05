@@ -7,6 +7,9 @@ import pika
 # when RabbitMQ broker is running on network
 params = pika.ConnectionParameters('rabbitmq')
 
+# when starting services with docker compose
+params = pika.ConnectionParameters('rabbitmq-demo-rabbitmq-1')
+
 # create the connection to broker
 connection = pika.BlockingConnection(params)
 channel = connection.channel()
