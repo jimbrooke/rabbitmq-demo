@@ -8,7 +8,9 @@ import pika
 #params = pika.ConnectionParameters('rabbitmq')
 
 # when starting services with docker compose
-params = pika.ConnectionParameters('rabbitmq-demo-rabbitmq-1')
+params = pika.ConnectionParameters(
+    'rabbitmq-demo-rabbitmq-1',
+    heartbeat=0)
 
 # create the connection to broker
 connection = pika.BlockingConnection(params)
